@@ -1,0 +1,49 @@
+{
+  "sessionid": [],
+  "list": [
+    {
+      "title": "테스트용글1",
+      "listtext": "테스트용글1",
+      "name": "테스트용글1",
+      "id": 1
+    },
+    {
+      "title": "테스트용글2",
+      "listtext": "테스트용글2",
+      "name": "테스트용글2",
+      "id": 2
+    },
+    {
+      "title": "테스트용글3",
+      "listtext": "테스트용글3",
+      "name": "테스트용글3",
+      "id": 3
+    },
+    {
+      "title": "무야호",
+      "listtext": "무야호",
+      "name": "123",
+      "id": 4
+    }
+  ],
+  "member": [
+    {
+      "userid": "test",
+      "password": "1234",
+      "name": "데이터벵",
+      "id": 1
+    },
+    {
+      "userid": "test2",
+      "password": "1234",
+      "name": "xpm222",
+      "id": 2
+    },
+    {
+      "userid": "123",
+      "password": "123",
+      "name": "123",
+      "id": 3
+    }
+  ]
+}
