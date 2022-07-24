@@ -1,0 +1,39 @@
+$gray: #ddd;
+$darkgray: #b2b2b2;
+$black: #000;
+$white: #fff;
+$sky: #87ceeb;
+$base-max-width: 1200px;
+$list-width: 800px;
+$title: 1.250em;
+$subtitle: 1.000em;
+$text: 0.875em;
+$subtext: 0.750em;
+
+@mixin size($width,$height) {
+    width: $width;
+    height: $height;
+};
+
+@mixin vw($attribute, $size) {
+    #{$attribute}: $size * 100 / 780 * 1vw;
+}
+
+@mixin box ($px,$line,$color,$radius) {
+    border: $px $line $color;
+    border-radius: $radius;
+};
+
+@mixin color($color,$backcolor) {
+    color: $color;
+    background-color: $backcolor;
+};
+@mixin font($fontsize,$fontwight) {
+    font-size: $fontsize;
+    font-weight: $fontwight;
+};
+@mixin phone{
+    @media (max-width: 400px){
+        @content;
+    };
+};

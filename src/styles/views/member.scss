@@ -1,0 +1,66 @@
+.member-back{
+    @include size(100%,100%);
+    background-color: #ddd;
+}
+    .member-container{
+      height: 100vh;
+      max-width: 400px;
+      margin: auto;
+      background-color: #fff;
+      padding: 200px 30px 0 30px;
+      &--back{
+        position: absolute;
+        display: none;
+      }
+      h2{
+        @include font($title,bold);
+      }
+      .member__form{
+          .input__member{
+            display: flex;
+            align-items: center;
+            .member-form__icon{
+              padding-left: 10px;
+              color: $gray;
+            }
+          }
+          .focuson{
+            border: 1px solid $sky;
+            .member-form__icon{
+              color: $black;
+            }
+          }
+          &__errortext{
+            padding-top: 20px;
+            color: red;
+            text-align: left;
+          }
+          &__signup{
+            font-size: $text;
+            margin-top: 30px;
+            &--btn{
+              font-weight: bold;
+              color: $black;
+            }
+          }
+      }
+    }
+  @include phone{
+    .member-container{
+      max-width: 100%;
+      padding-top: 100px;
+      &--back{
+        display: inherit;
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        color: $black;
+        i{
+          transform: scale(3);
+        }
+      }
+    }
+  }

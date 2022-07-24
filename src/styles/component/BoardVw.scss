@@ -1,0 +1,125 @@
+.board{
+  max-width: 800px;
+  margin: auto;
+  margin-top: 100px;
+  &-header__btn{
+    text-align: right;
+    margin-bottom: 20px;
+    &__home{
+      @include color($white,$black);
+    }
+  }
+  &-header{
+    border: 1px solid $gray;
+    height: 100px;
+    text-align: left;
+    &-title{
+      margin-left: 90px;
+    }
+    &__user-icon{
+      float: left;
+      @include size(90px,100%);
+      background-color: $gray;
+      line-height: 100px;
+      text-align: center;
+      i{
+        transform: scale(4);
+      }
+    }
+    &__subject{
+      padding: 20px 20px;
+      border-bottom: 1px solid $gray;
+      box-sizing: border-box;
+      @include font($subtitle,bold);
+      &:before{
+        content: '제목: ';
+      }
+    }
+    &__info{
+      padding: 14px 19px;
+      position: relative;
+    }
+    &__writer{
+      @include font($text,bold);
+      &:before{
+        content: '이름: ';
+      }
+    }
+    &__date{
+      padding-left: 10px;
+      font-size: $subtext;
+      color: $darkgray;
+    }
+    &--popup{
+      position: absolute;
+      @include size(120px,40px);
+      @include color($black,$gray);
+      font-size: $text;
+      line-height: 40px;
+      text-align: center;
+      a{
+        color: $black;
+      }
+    }
+  }
+  &__text{
+    padding: 20px;
+    text-align: left;
+    border: 1px solid $gray;
+  }
+  &__link{
+    margin: 30px 0;
+    a{
+      color: $black;
+    }
+  }
+  &-bottom{
+    width: 33%;
+      display: flex;
+      float: right;
+      margin-top: 30px;
+    justify-content: space-between;
+    &--home{
+      @include color($white,$black);
+    }
+  }
+  @include phone{
+    margin-top: 0;
+    &-content{
+      padding: 0 20px;
+    }
+    &-header{
+      border: none;
+      &__user-icon{
+        display: none;
+      }
+      &-title{
+        margin: auto;
+      }
+      &__subject{
+        font-size: $title;
+      }
+      &__info{
+        border-bottom: 1px solid $gray;
+      }
+      &__writer{
+        &:before{
+        content: '';
+        }
+      }
+      &__date{
+        padding: 0;
+      }
+      span{
+        display: inherit;
+      }
+    }
+    &__text{
+      margin-top: 30px;
+      border: none;
+    }
+    &-bottom{
+    width: auto;
+    }
+  }
+}

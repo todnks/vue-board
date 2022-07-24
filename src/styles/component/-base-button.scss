@@ -1,0 +1,25 @@
+.base-btn{
+    @include size(100%,50px);
+
+    box-sizing: border-box;
+    &__member{
+        @include size (100%,50px);
+        @include color($white,$black);
+        border-radius: 4px;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+    &__Header{
+        @include size (100%, 100%);
+        @include color ($black,$white);
+        font-size: $text;
+    }
+    &__board{
+        font-size: $text;
+        padding: 10px 20px 10px 20px;
+        @include color ($black,$white);
+        @include box(1px,solid,$gray,0px);
+        text-align: center;
+        display: inline-block;
+    }
+}

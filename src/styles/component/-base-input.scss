@@ -1,0 +1,25 @@
+.input{
+    &__title{
+        width: 100%;
+        @include box(1px,solid,$gray,4px);
+    }
+    &__member{
+        @include size(100%,50px);
+        @include box(1px,solid,$gray,4px);
+        margin-top: 8px;
+        input{
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+        @include size(100%,48px);
+            padding:0 10px;
+        }
+    }
+    &__textbox{
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 20px 0px 20px 50px;
+    text-align: left;
+    align-items: center;
+    }
+}
