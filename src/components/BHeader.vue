@@ -1,9 +1,9 @@
 <template>
-  <div class='Header'>
+  <div class='Header' ref="header">
     <div class='Header__sidemenu' @click='sidemenu(`open`)'>
       <i class='fa-solid fa-bars'></i>
     </div>
-    <div class='Header-card passive-menu'>
+    <div class='Header-card passive-menu' ref="headerCard">
       <span class='Header-card--close' @click='sidemenu(`close`)'><i class="fa-solid fa-x"></i></span>
       <template v-if='userinfo !== null'>
           <div class='Header-card__info'>
@@ -23,7 +23,7 @@
   </div>
 </template>
 <script>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import BButton from '@/components/BButton.vue'
 import Http from '@/service/Http'
 import { useState } from '@/stores/helper'
@@ -32,6 +32,8 @@ export default {
   components: { BButton },
   setup () {
     const http = new Http()
+    const headerCard = ref(null)
+    const header = ref(null)
     const { userinfo } = useState('user')
     const logout = async () => {
       await http.get('/member/logout')
@@ -40,13 +42,15 @@ export default {
     // sidemenu클래스값부여
     const sidemenu = (e) => {
       if (e === 'open') {
-        document.querySelector('.Header-card').classList.add('active-menu')
-        document.querySelector('.Header').classList.add('side-menu--open')
+        headerCard.value.classList.add('active-menu')
+        header.value.classList.add('side-menu--open')
         document.body.classList.add('gnbopen')
+
         return
       }
-      document.querySelector('.Header-card').classList.remove('active-menu')
-      document.querySelector('.Header').classList.remove('side-menu--open')
+
+      headerCard.value.classList.remove('active-menu')
+      header.value.classList.remove('side-menu--open')
       document.body.classList.remove('gnbopen')
     }
     // userinfo 가져오기
@@ -57,6 +61,8 @@ export default {
     })
     return {
       logout,
+      headerCard,
+      header,
       sidemenu,
       userinfo
     }
