@@ -19,28 +19,23 @@
 <script>
 import BButton from '@/components/BButton.vue'
 import BInput from '@/components/BInput.vue'
-import { reactive, toRefs } from 'vue'
+import { onMounted, reactive, toRefs } from 'vue'
 import BTextarea from '@/components/BTextarea.vue'
-import axios from 'axios'
 import router from '@/router'
 import { useRoute } from 'vue-router'
-import { useState } from '@/stores/helper'
+import Http from '@/service/Http'
 export default {
   components: { BButton, BInput, BTextarea },
   setup () {
+    const http = new Http()
     const route = useRoute()
-    const getlist = route.query.idx
-    const { userinfo } = useState('user')
-    if (!userinfo.value) {
-      alert('로그인후에 이용가능합니다.')
-      router.push('/')
-    };
+    const getlist = route.query.idxs
     const text = reactive({
       subject: '',
-      content: ''
+      content: '',
+      writer: ''
     })
-    const username = userinfo.value.name
-    // 글작성
+    router.push('/')
     const Write = async () => {
       if (!text.subject) {
         alert('제목을 입력해주세요')
@@ -54,21 +49,24 @@ export default {
         alert('제목은 30자 이내로 작성해주세요')
         return
       }
-      await axios.post('/board', {
-        ...text,
-        writer: username
+      await http.post('/board', {
+        ...text
       })
       router.push('/')
     }
     // 글수정
     const upDate = async () => {
-      axios.put('/board', {
+      http.put('/board', {
         ...text,
         idx: getlist
       })
       alert('글수정완료')
       router.push('/')
     }
+    onMounted(async () => {
+      const { name } = await http.get('/member/getMemberInfo')
+      text.writer = name
+    })
     return {
       ...toRefs(text),
       Write,
@@ -78,7 +76,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
