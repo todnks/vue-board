@@ -11,7 +11,7 @@
             <span class='Header-card__name'>{{userinfo.id}}님</span>
             <span class='Header-card__email'>{{userinfo.email}}</span>
           </div>
-            <BButton @click='logout' class='Header-card--logout base-btn__Header'>로그아웃</BButton>
+            <BButton @click='logout' class='Header-card base-btn__Header--logout'>로그아웃</BButton>
       </template>
       <template v-else>
         <div class='Header-card__btn'>
@@ -56,7 +56,6 @@ export default {
     // userinfo 가져오기
     onMounted(async () => {
       const info = await http.get('/member/getMemberInfo')
-
       userinfo.value = info
     })
     return {

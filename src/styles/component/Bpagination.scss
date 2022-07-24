@@ -16,5 +16,10 @@
   &--btn{
     @extend %bottombtn;
     cursor: pointer;
+    line-height: 35px;
+    >a{
+      @include size(100%,100%);
+      display: block;
+    }
   }
 }
