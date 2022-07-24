@@ -32,7 +32,6 @@ export default {
     const ckevt = reactive({
       userclick: false
     })
-    // popup박스에 true false값부여
     const userlist = (e) => {
       if (e === true) {
         ckevt.userclick = true

@@ -1,10 +1,13 @@
 @import
   './_reset',
   './variables',
+  '../layout/Header',
+  '../views/member',
+  '../views/BWrite',
+  '../views/BBoard.scss',
   '../component/-base-button',
   '../component/-base-input',
-  '../views/member',
-  '../views/write',
-  '../component/list',
-  '../component/BoardVw',
-  '../layout/Header';
+  '../component/BList',
+  '../component/Board',
+  '../component/Bpagination',
+  '../component/BListSearch';

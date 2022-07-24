@@ -1,17 +1,21 @@
 <template>
   <div class='table-pagebtn'>
-    <div class='table-pagebtn--btn table-pagebtn--prev' @click="prevPage">
+    <BButton class='table-pagebtn--btn table-pagebtn--prev' @click="prevPage">
       <i class="fa-solid fa-arrow-left"></i>
-    </div>
-    <router-link
+    </BButton>
+    <BButton
       v-for='i in getMaxPage'
       :key='i'
       class="table-pagebtn--btn"
+      :class="[nowpage == i ? 'selectPage' : false]"
+    >
+    <router-link
       :to='`/?idx=${i}`'
     >{{i}}</router-link>
-    <div class='table-pagebtn--btn table-pagebtn--next' @click="nextPage">
+    </BButton>
+    <BButton class='table-pagebtn--btn table-pagebtn--next' @click="nextPage">
       <i class="fa-solid fa-arrow-right"></i>
-    </div>
+    </BButton>
   </div>
 </template>
 
@@ -19,8 +23,10 @@
 import { useRoute } from 'vue-router'
 import { useGetters } from '@/stores/helper'
 import router from '@/router'
-
+import { computed } from 'vue'
+import BButton from '@/components/BButton.vue'
 export default {
+  components: { BButton },
   props: {
     btn: {
       type: Object,
@@ -30,29 +36,21 @@ export default {
   setup () {
     const route = useRoute()
     const { getMaxPage } = useGetters('pagination')
-
+    const { idx } = route.query
+    const pageIndex = Number(idx) || 1
     const prevPage = () => {
-      const { idx } = route.query
-      const pageIndex = Number(idx) || 1
-
       if (pageIndex === 1) return
-
       router.push(`/?idx=${pageIndex - 1}`)
     }
-
     const nextPage = () => {
-      const { idx } = route.query
-      const pageIndex = Number(idx) || 1
-
       if (pageIndex >= getMaxPage.value) return
-
       router.push(`/?idx=${pageIndex + 1}`)
     }
-
     return {
       prevPage,
       nextPage,
-      getMaxPage
+      getMaxPage,
+      nowpage: computed(() => route.query.idx)
     }
   }
 }

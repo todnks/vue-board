@@ -1,0 +1,73 @@
+.write{
+  max-width: 800px;
+  margin: auto;
+  @include phone{
+    padding: 0px 20px;
+  }
+  &__btn{
+    margin-top: 40px;
+    width: 100px;
+    height: 50px;
+    }
+  &__title{
+    h2{ 
+      @include font($title,bold);
+    }
+    border-bottom: 1px solid $black;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  &__form{
+    width: 100%;
+    span{
+      font-weight: bold;
+      width: 50px;
+      padding-right: 20px;
+    }
+    >div{
+        display: flex;
+        border: 1px solid #ddd;
+        padding: 20px 50px 20px 50px;
+        text-align: left;
+        align-items: center;
+    }
+    &__title{
+      input{
+        width: 100%;
+        outline: none;
+        width: 100%;
+      }
+    }
+    &__contents{
+      textarea{
+        width: 100%;
+        min-height: 300px;
+        resize: none;
+        outline: none;
+      }
+    }
+    @include phone{
+      >div{
+        padding: 0;
+        border: none;
+      }
+      &__title{
+        input{
+          border: none;
+          border-top: 1px solid $gray;
+          border-bottom: 1px solid $gray;
+          height: 30px;
+        }
+      }
+      &__contents{
+        margin-top: 20px;
+        textarea{
+          border: none;
+          border-top: 1px solid $gray;
+          border-bottom: 1px solid $gray;
+          min-height: 200px;
+        }
+      }
+    }
+  }
+}

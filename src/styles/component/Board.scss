@@ -1,0 +1,53 @@
+.board-header{
+  border: 1px solid $gray;
+  height: 100px;
+  text-align: left;
+  &-title{
+    margin-left: 90px;
+  }
+  &__user-icon{
+    float: left;
+    @include size(90px,100%);
+    background-color: $gray;
+    line-height: 100px;
+    text-align: center;
+    i{
+      transform: scale(4);
+    }
+  }
+  &__subject{
+    padding: 20px 20px;
+    border-bottom: 1px solid $gray;
+    box-sizing: border-box;
+    @include font($subtitle,bold);
+    &:before{
+      content: '제목: ';
+    }
+  }
+  &__info{
+    padding: 14px 19px;
+    position: relative;
+  }
+  &__writer{
+    @include font($text,bold);
+    &:before{
+      content: '이름: ';
+    }
+  }
+  &__date{
+    padding-left: 10px;
+    font-size: $subtext;
+    color: $darkgray;
+  }
+  &--popup{
+    position: absolute;
+    @include size(120px,40px);
+    @include color($black,$gray);
+    font-size: $text;
+    line-height: 40px;
+    text-align: center;
+    a{
+      color: $black;
+    }
+  }
+}

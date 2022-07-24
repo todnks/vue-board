@@ -1,0 +1,42 @@
+.home-search{
+  display: flex;
+  float: right;
+  width: 40%;
+  margin-bottom: 16px;
+  position: relative;
+  align-items: center;
+}
+.home__searchbar{
+  cursor: text;
+  width: 100%;
+  position: relative;
+  .base-input{
+    input{
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: $title;
+      padding: 8px 0;
+      }
+    }
+  &:before, &:after{
+    content: '';
+    position: absolute;
+    transition: 0.3s;
+    bottom: -1px;
+    width: 100%;
+    left: 0;
+  }
+  &:before{
+    border-bottom: 1px solid $gray;
+  }
+  &:after{
+    border: 1px solid $sky;
+    transform: scaleX(0);
+  }
+}
+.home__searchbtn{
+  right: 0;
+  font-size: $title;
+  transition: 1s;
+}

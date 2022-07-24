@@ -51,13 +51,6 @@
       @include size(32px, 100%);
       line-height: 32px;
     }
-    &--logout{
-      @include size(100px,30px);
-      border-radius: 28px;
-      @include color($white,$gray);
-      transition: 0.3s;
-      border: none;
-    }
     &--close{
       display: none;
     }

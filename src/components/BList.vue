@@ -11,8 +11,9 @@
   <b-pagination />
   <router-link
   to='/write'
-  class='table-btn--write base-btn__board'>
-  글쓰기</router-link>
+  class='table-btn--write base-btn__board'
+  >글쓰기
+  </router-link>
 </template>
 <script>
 import axios from 'axios'

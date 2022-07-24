@@ -1,0 +1,157 @@
+.home{ 
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  &-floatbox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include phone{
+      width: 100%;
+      &__list{
+        display: none;
+      }
+      &__search-content{
+        width: 95%;
+        margin: auto;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  &__countlist{
+    font-size: $subtitle;
+    padding-left: 10px;
+    &:before{
+      content: '총';
+    }
+    &:after{
+      content: '건';
+    }
+  }
+  .input--focus{
+    &:after{
+      transform: scaleX(1);
+    }
+  }
+  .table{
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative;
+    &__header{
+      line-height: 40px;
+      cursor: pointer;
+      background-color: $gray;
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      text-align: left;
+      padding: 0 20px;
+      span>i{
+        opacity: 0;
+        transition: .3s;
+      }
+      .active{
+        font-weight: bold;
+        >span>i{
+          opacity: 1;
+        }
+      }
+      .listdown{
+        >span > i {
+          transform: rotate( 180deg );
+        }
+      }
+    }
+    &__list{
+      max-width: $list-width;
+      margin: auto;
+      border: 1px solid $gray;
+      min-height: 40px;
+      line-height: 40px;
+      font-size: $text;
+      > div {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        text-align: left;
+        padding: 0 20px;
+      }
+    }
+    &__title{
+      text-align: left;
+      width: 350px;
+      padding-left: 60px;
+      a{
+        color: $black;
+      }
+    }
+    &__name{
+      font-weight: bold;
+      width: 100px;
+      padding-right: 30px;
+    }
+    &--phone{
+      width: 300px;
+    }
+    &--phone-btn{
+      position: absolute;
+      left: 0;
+      top:0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+    &__errorcode{
+      padding: 100px 10px;
+    }
+    @include phone{
+      width: 95%;
+      margin: auto;
+      border-top: 1px solid $black;
+      &-header{
+        display: none;
+      }
+      &__list{
+          height: 50px;
+          display: block;
+          text-align: left;
+          position: relative;
+          padding-left: 15px;
+          border: none;
+          border-bottom: 1px solid $gray;
+        }
+        &__title{ 
+          padding:0;
+          width: auto;
+          @include font($subtitle,bold);
+          line-height: 20px;
+        }
+        &__name{ 
+          @include font($text,normal);
+          width: auto;
+          &:before{
+            content: '';
+          }
+        }
+        &__date:before{
+          content:"";
+        }
+        &__date{
+          @include font(1.2vw,normal);
+        }
+        &--phone{
+          width: auto;
+        }
+        &--phone-btn{
+          display: inherit;
+        }
+      }
+      &-btn--write{
+        margin: 0;
+        margin-top: 10px;
+        border: none;
+        @include color($white,$black);
+        float: right;
+        margin-bottom: 10px;
+      }
+  }
+}

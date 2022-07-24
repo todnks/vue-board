@@ -10,9 +10,16 @@
         margin-top: 30px;
     }
     &__Header{
-        @include size (100%, 100%);
+        width: 100%;
         @include color ($black,$white);
         font-size: $text;
+        &--logout{
+            @include size(100px,30px);
+            border-radius: 28px;
+            @include color($white,$gray);
+            transition: 0.3s;
+            border: none;
+        }
     }
     &__board{
         font-size: $text;
