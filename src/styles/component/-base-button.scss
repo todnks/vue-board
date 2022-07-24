@@ -16,7 +16,7 @@
         &--logout{
             @include size(100px,30px);
             border-radius: 28px;
-            @include color($white,$gray);
+            @include color($black,$gray);
             transition: 0.3s;
             border: none;
         }
