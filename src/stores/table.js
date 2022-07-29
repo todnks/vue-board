@@ -2,13 +2,21 @@ import { defineStore } from 'pinia'
 
 const useTableStore = defineStore('table', {
   state: () => ({
-    listsortstate: ''
+    listsortstate: {
+      name: null,
+      state: 'none'
+    },
+    search: ''
   }),
   actions: {
-    listsort ({ sortstate }) {
-      if (this.listsortstate === 'listup') sortstate = 'listdown'
-      if (this.listsortstate === 'listdown') sortstate = ''
-      this.listsortstate = sortstate
+    listsort ({ name, sortstate }) {
+      if (this.listsortstate.state === 'listup') sortstate = 'listdown'
+      if (this.listsortstate.state === 'listdown') sortstate = 'none'
+      if (this.listsortstate.name !== name) sortstate = 'listup'
+      this.listsortstate = { name: name, state: sortstate }
+    },
+    searchSet (data) {
+      this.search = data
     }
   }
 })
