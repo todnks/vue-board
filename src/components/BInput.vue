@@ -1,5 +1,5 @@
 <template>
-    <input :type='type' v-model='input' @input='update' :placeholder='`${placeholder}`' class='base-input'>
+    <input :type="type" v-model="input" @input="update" :placeholder="`${placeholder}`" class="base-input">
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
-      <div class='home-search'>
-        <b-input-search v-model='search.text' @keydown.enter='searchsubject' placeholder='검색'/>
-      <div class='home__searchbtn' @click='searchsubject'>
+      <div class="home-search">
+        <b-input-search v-model="search.text" @keydown.enter="searchsubject" placeholder="검색"/>
+      <div class="home__searchbtn" @click="searchsubject">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
@@ -10,7 +10,6 @@
 <script>
 import BInputSearch from '@/components/BInputSearch.vue'
 import { useActions } from '@/stores/helper'
-
 export default {
   components: { BInputSearch },
   setup () {

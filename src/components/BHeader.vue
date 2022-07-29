@@ -1,26 +1,28 @@
 <template>
   <div
-    class='Header'
+    class="Header"
     :class="[header === true ? 'side-menu--open' : false]"
   >
-  <div class='Header__sidemenu' @click='sidemenu(true)'>
-      <i class='fa-solid fa-bars'></i>
+  <div class="Header__sidemenu" @click="sidemenu(true)">
+      <i class="fa-solid fa-bars"></i>
     </div>
-    <div class='Header-card passive-menu'
+    <div class="Header-card passive-menu"
       :class="[header === true ? 'active-menu' : false]"
-    ><span class='Header-card--close' @click='sidemenu(false)'><i class="fa-solid fa-x"></i></span>
-      <template v-if='userinfo !== null'>
-          <div class='Header-card__info'>
-            <span class='Header-card__icon'><i class="fa-regular fa-user"></i></span>
-            <span class='Header-card__name'>{{userinfo.id}}님</span>
-            <span class='Header-card__email'>{{userinfo.email}}</span>
+    ><span class="Header-card--close" @click="sidemenu(false)">
+      <i class="fa-solid fa-x"></i>
+      </span>
+      <template v-if="userinfo !== null">
+          <div class="Header-card__info">
+            <span class="Header-card__icon"><i class="fa-regular fa-user"></i></span>
+            <span class="Header-card__name">{{userinfo.id}}님</span>
+            <span class="Header-card__email">{{userinfo.email}}</span>
           </div>
-            <BButton @click='logout' class='Header-card base-btn__Header--logout'>로그아웃</BButton>
+            <BButton @click="logout" class="Header-card base-btn__Header--logout">로그아웃</BButton>
       </template>
       <template v-else>
-        <div class='Header-card__btn'>
-        <router-link to='/login' class='Header-card--login base-btn__Header'>로그인</router-link>
-        <router-link to='/signup' class='Header-card--signup base-btn__Header'>회윈가입</router-link>
+        <div class="Header-card__btn">
+        <router-link to="/login" class="Header-card--login base-btn__Header">로그인</router-link>
+        <router-link to="/signup" class="Header-card--signup base-btn__Header">회윈가입</router-link>
         </div>
       </template>
     </div>

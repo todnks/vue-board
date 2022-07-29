@@ -1,5 +1,5 @@
 <template>
-  <b-header v-if='!$route.meta.header'/>
+  <b-header v-if="!$route.meta.header"/>
   <router-view/>
 </template>
 <script>

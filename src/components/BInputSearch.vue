@@ -1,7 +1,7 @@
 <template>
   <div class='home__searchbar'>
     <div class='base-input'>
-      <input :type='type' v-model='input' @input='update' :placeholder='`${placeholder}`' class='base-input' @focus="addclass(true)" @blur="addclass(false)" >
+      <input :type="type" v-model="input" @input="update" :placeholder="`${placeholder}`" class="base-input" @focus="addclass(true)" @blur="addclass(false)" >
     </div>
   </div>
 </template>
