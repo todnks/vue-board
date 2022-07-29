@@ -1,17 +1,17 @@
 <template>
-  <div class='write'>
-    <div class='write__title'>
+  <div class="write">
+    <div class="write__title">
       <h2>글쓰기</h2>
     </div>
-    <div class='write__form'>
-      <div class='write__form__title'>
-          <b-input  v-model='subject' class='wirte-title__input' placeholder='글 제목'/>
+    <div class="write__form">
+      <div class="write__form__title">
+          <b-input  v-model="subject" class="wirte-title__input" placeholder="글 제목"/>
       </div>
       <div class="write__form__contents">
-        <b-textarea placeholder='글 내용' v-model='content' class='write__contents__textbox'/>
+        <b-textarea placeholder="글 내용" v-model="content" class="write__contents__textbox"/>
       </div>
-      <b-button @click='upDate' v-if='getlist' class='write__btn base-btn__board'>글수정</b-button>
-      <b-button @click='Write' v-else class='write__btn base-btn__board'>글작성</b-button>
+      <b-button @click="upDate" v-if="getlist" class="write__btn base-btn__board">글수정</b-button>
+      <b-button @click="Write" v-else class="write__btn base-btn__board">글작성</b-button>
     </div>
   </div>
 </template>
@@ -22,14 +22,13 @@ import BInput from '@/components/BInput.vue'
 import { onMounted, reactive, toRefs } from 'vue'
 import BTextarea from '@/components/BTextarea.vue'
 import router from '@/router'
-import { useRoute } from 'vue-router'
 import Http from '@/service/Http'
+import { useState } from '@/stores/helper'
 export default {
   components: { BButton, BInput, BTextarea },
   setup () {
     const http = new Http()
-    const route = useRoute()
-    const getlist = route.query.idxs
+    const { page } = useState('pagination')
     const text = reactive({
       subject: '',
       content: '',
@@ -56,7 +55,7 @@ export default {
     const upDate = async () => {
       http.put('/board', {
         ...text,
-        idx: getlist
+        idx: page.value
       })
       alert('글수정완료')
       router.push('/')
@@ -72,7 +71,7 @@ export default {
     return {
       ...toRefs(text),
       Write,
-      getlist,
+      page,
       upDate
     }
   }
