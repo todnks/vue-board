@@ -5,25 +5,29 @@
         v-for="(item, key) in header"
         :key="key"
         @click="sortstate(item.key)"
+        :class="[sort.name === item.key ? sort.state : 'none']"
       >{{ item.title }}
+      <i class="fa-solid fa-arrow-down"></i>
       </div>
     </div>
-    <div class="table__list">
-      <div v-for="(item, key) in items" :key="key">
-        <div>{{ item.writer }}</div>
-        <div>
-          <router-link :to="`/board/${item.idx}`">{{ item.subject }}</router-link>
+    <b-list-skeleton v-if="!items"/>
+      <div v-if="items" class="table__list">
+        <div v-for="(item, key) in items" :key="key">
+          <div>{{ item.writer }}</div>
+          <div>
+            <router-link :to="`/board/${item.idx}`">{{ item.subject }}</router-link>
+          </div>
+          <div>{{ item.registDate }}</div>
         </div>
-        <div>{{ item.registDate }}</div>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 import { useActions, useState } from '@/stores/helper'
-
+import BListSkeleton from '@/components/BListSkeleton.vue'
 export default {
+  components: { BListSkeleton },
   props: {
     header: {
       type: Array,
@@ -38,10 +42,10 @@ export default {
     const { listsort } = useActions('table')
     const { listsortstate } = useState('table')
     const { list } = useState('board')
-
+    const { boardinfo } = useActions('board')
     const sortstate = (e) => {
-      listsort({ sortstate: 'listup' })
-      sortlist(e, listsortstate.value)
+      listsort({ name: e, sortstate: 'listup' })
+      sortlist(e, listsortstate.value.state)
     }
 
     const sortlist = (name, state) => {
@@ -61,10 +65,12 @@ export default {
         return a.idx > b.idx ? -1 : a.idx < b.idx ? 1 : 0
       })
     }
+    boardinfo({ skeleton: 'on' })
     return {
       sortstate,
       sortlist,
-      state: listsortstate
+      sort: listsortstate,
+      list: list
     }
   }
 }

@@ -5,17 +5,19 @@ import { useState } from './helper'
 const useBoardStore = defineStore('board', {
   state: () => ({
     list: null,
-    boardopen: {}
+    board: { skeleton: 'on' }
   }),
   actions: {
     ListhSetup (data) {
-      data.map(e => {
-        if (e.updateDate) {
-          e.updateDate = dayjs(e.updateDate).format('YYYY-MM-DD/HH:mm')
-        }
-        e.registDate = dayjs(e.registDate).format('YYYY-MM-DD/HH:mm')
-        return e
-      })
+      if (data !== null) {
+        data.map(e => {
+          if (e.updateDate) {
+            e.updateDate = dayjs(e.updateDate).format('YYYY-MM-DD/HH:mm')
+          }
+          e.registDate = dayjs(e.registDate).format('YYYY-MM-DD/HH:mm')
+          return e
+        })
+      }
       this.list = data
     },
     setBoardList ({ list, count }) {
@@ -29,7 +31,7 @@ const useBoardStore = defineStore('board', {
       totalCount.value = count
     },
     boardinfo (data) {
-      this.boardopen = data
+      this.board = data
     }
   }
 })

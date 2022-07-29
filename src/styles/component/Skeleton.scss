@@ -1,0 +1,56 @@
+@keyframes loading {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(800px);
+  }
+}
+.table__skeleton{
+  position: relative;
+  height: 410px;
+  background-color: $brightgray;
+  cursor: wait;
+}
+.board__skeleton{
+  cursor: wait;
+}
+.board-header{
+  &-title{
+    height: 100%;
+    position: relative;
+  }
+  &__subject--skeleton{
+    position: absolute;
+    width: 80%;
+    height: 30px;
+    background-color: $gray;
+    border-radius: 2px;
+    top: 15px;
+    left: 20px;
+  }
+  &__info--skeleton{
+    position: absolute;
+    width: 80%;
+    height: 20px;
+    background-color: $gray;
+    border-radius: 2px;
+    bottom: 14px;
+    left: 20px;
+  }
+}
+.board-content--skeleton{
+  height: 60px;
+  border: 1px solid $gray;
+  padding: 0 20px;
+}
+.board-content__text--skeleton{
+  width: 100%;
+  height: 20px;
+  background-color: $gray;
+  margin: auto;
+  margin-top: 20px;
+}
