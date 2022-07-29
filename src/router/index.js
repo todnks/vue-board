@@ -28,11 +28,6 @@ const routes = [
     component: () => import('@/views/BBoard.vue')
   },
   {
-    path: '/profile/:idx',
-    name: 'Profilepage',
-    component: () => import('@/views/BProfile.vue')
-  },
-  {
     path: '/write',
     name: 'Write',
     component: () => import('@/views/BWrite.vue')

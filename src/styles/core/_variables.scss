@@ -1,4 +1,5 @@
 $gray: #ddd;
+$brightgray: #f2f2f2;
 $darkgray: #b2b2b2;
 $black: #000;
 $white: #fff;
@@ -32,8 +33,13 @@ $subtext: 0.750em;
     font-size: $fontsize;
     font-weight: $fontwight;
 };
-@mixin phone{
-    @media (max-width: 400px){
+@mixin table {
+    @media (max-width: 780px){
+        @content;
+    };
+};
+@mixin phone {
+    @media (max-width: 480px){
         @content;
     };
 };

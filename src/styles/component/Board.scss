@@ -50,4 +50,12 @@
       color: $black;
     }
   }
+  @include table{
+    &__user-icon{
+      display: none;
+    }
+    &-title{
+      margin: auto;
+    }
+  }
 }

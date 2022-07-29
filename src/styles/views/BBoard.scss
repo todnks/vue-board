@@ -21,52 +21,12 @@
     }
   }
   &-bottom{
-    width: 33%;
       display: flex;
       float: right;
       margin-top: 30px;
     justify-content: space-between;
     &--home{
       @include color($white,$black);
-    }
-  }
-  @include phone{
-    margin-top: 0;
-    &-content{
-      padding: 0 20px;
-    }
-    &-header{
-      border: none;
-      &__user-icon{
-        display: none;
-      }
-      &-title{
-        margin: auto;
-      }
-      &__subject{
-        font-size: $title;
-      }
-      &__info{
-        border-bottom: 1px solid $gray;
-      }
-      &__writer{
-        &:before{
-        content: '';
-        }
-      }
-      &__date{
-        padding: 0;
-      }
-      span{
-        display: inherit;
-      }
-    }
-    &__text{
-      margin-top: 30px;
-      border: none;
-    }
-    &-bottom{
-    width: auto;
     }
   }
 }

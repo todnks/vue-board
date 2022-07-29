@@ -1,14 +1,14 @@
 <template>
   <div class='write'>
-    <div class='writ__title'>
+    <div class='write__title'>
       <h2>글쓰기</h2>
     </div>
     <div class='write__form'>
       <div class='write__form__title'>
-          <b-input  v-model='subject' class='wirte-title__input' placeholder='제목을 입력해주세요'/>
+          <b-input  v-model='subject' class='wirte-title__input' placeholder='글 제목'/>
       </div>
       <div class="write__form__contents">
-        <b-textarea placeholder='내용을 입력해주세요' v-model='content' class='write__contents__textbox'/>
+        <b-textarea placeholder='글 내용' v-model='content' class='write__contents__textbox'/>
       </div>
       <b-button @click='upDate' v-if='getlist' class='write__btn base-btn__board'>글수정</b-button>
       <b-button @click='Write' v-else class='write__btn base-btn__board'>글작성</b-button>
@@ -35,7 +35,6 @@ export default {
       content: '',
       writer: ''
     })
-    router.push('/')
     const Write = async () => {
       if (!text.subject) {
         alert('제목을 입력해주세요')
@@ -54,7 +53,6 @@ export default {
       })
       router.push('/')
     }
-    // 글수정
     const upDate = async () => {
       http.put('/board', {
         ...text,
@@ -64,8 +62,12 @@ export default {
       router.push('/')
     }
     onMounted(async () => {
-      const { name } = await http.get('/member/getMemberInfo')
-      text.writer = name
+      const data = await http.get('/member/getMemberInfo')
+      if (!data) {
+        alert('로그인후에 이용가능합니다')
+        router.push('/')
+      }
+      text.writer = data
     })
     return {
       ...toRefs(text),
