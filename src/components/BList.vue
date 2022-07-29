@@ -41,9 +41,9 @@ export default {
       { title: '작성일자', key: 'registDate' }
     ]
     const getBoardList = async () => {
-      const nowpage = Number(route.query.idx) || Number(route.params.idx) || null
+      const nowpage = Number(route.query.idx) || Number(route.params.idx) || 1
+      console.log(route)
       nowPage(nowpage)
-      if (nowpage === null) router('/?idx=1')
       const data = await http.get('/board/list', {
         params: {
           search: search.value,
@@ -61,6 +61,7 @@ export default {
       getBoardList()
       router.push('/')
     })
+    router.push('/?idx=1')
     return {
       tableHeader,
       list

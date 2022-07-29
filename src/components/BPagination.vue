@@ -35,14 +35,14 @@ export default {
     const { getMaxPage } = useGetters('pagination')
     const { ListhSetup } = useActions('board')
     const pageMove = (e) => {
-      if (e === page) return
+      if (e === page.value) return
       if (e === 'next') {
-        if (page >= getMaxPage.value) return
-        router.push(`/?idx=${page + 1}`)
+        if (page.value >= getMaxPage.value) return
+        router.push(`/?idx=${page.value + 1}`)
       }
       if (e === 'prev') {
-        if (page === 1) return
-        router.push(`/?idx=${page - 1}`)
+        if (page.value === 1) return
+        router.push(`/?idx=${page.value - 1}`)
       }
       if (e !== 'next' && e !== 'prev') {
         router.push(`/?idx=${e}`)
