@@ -40,3 +40,8 @@
   font-size: $title;
   transition: 1s;
 }
+.input--focus{
+  &:after{
+    transform: scaleX(1);
+  }
+}
