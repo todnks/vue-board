@@ -1,10 +1,14 @@
 <template>
-  <div class='Header' ref="header">
-    <div class='Header__sidemenu' @click='sidemenu(`open`)'>
+  <div
+    class='Header'
+    :class="[header === true ? 'side-menu--open' : false]"
+  >
+  <div class='Header__sidemenu' @click='sidemenu(true)'>
       <i class='fa-solid fa-bars'></i>
     </div>
-    <div class='Header-card passive-menu' ref="headerCard">
-      <span class='Header-card--close' @click='sidemenu(`close`)'><i class="fa-solid fa-x"></i></span>
+    <div class='Header-card passive-menu'
+      :class="[header === true ? 'active-menu' : false]"
+    ><span class='Header-card--close' @click='sidemenu(false)'><i class="fa-solid fa-x"></i></span>
       <template v-if='userinfo !== null'>
           <div class='Header-card__info'>
             <span class='Header-card__icon'><i class="fa-regular fa-user"></i></span>
@@ -27,31 +31,27 @@ import { onMounted, ref } from 'vue'
 import BButton from '@/components/BButton.vue'
 import Http from '@/service/Http'
 import { useState } from '@/stores/helper'
-
+import router from '@/router'
 export default {
   components: { BButton },
   setup () {
     const http = new Http()
     const headerCard = ref(null)
-    const header = ref(null)
+    const header = ref(false)
     const { userinfo } = useState('user')
     const logout = async () => {
       await http.get('/member/logout')
+      userinfo.value = null
       alert('로그아웃')
+      router.push('/')
     }
     // sidemenu클래스값부여
     const sidemenu = (e) => {
-      if (e === 'open') {
-        headerCard.value.classList.add('active-menu')
-        header.value.classList.add('side-menu--open')
-        document.body.classList.add('gnbopen')
-
+      if (e === true) {
+        header.value = true
         return
       }
-
-      headerCard.value.classList.remove('active-menu')
-      header.value.classList.remove('side-menu--open')
-      document.body.classList.remove('gnbopen')
+      header.value = false
     }
     // userinfo 가져오기
     onMounted(async () => {
