@@ -29,6 +29,7 @@ export default {
   setup () {
     const http = new Http()
     const { page } = useState('pagination')
+    const { userinfo } = useState('user')
     const text = reactive({
       subject: '',
       content: '',
@@ -61,12 +62,10 @@ export default {
       router.push('/')
     }
     onMounted(async () => {
-      const data = await http.get('/member/getMemberInfo')
-      if (!data) {
-        alert('로그인후에 이용가능합니다')
+      if (!userinfo._object.userinfo) {
+        alert('로그인후에 이용가능')
         router.push('/')
       }
-      text.writer = data
     })
     return {
       ...toRefs(text),

@@ -42,7 +42,6 @@ export default {
     ]
     const getBoardList = async () => {
       const nowpage = Number(route.query.idx) || Number(route.params.idx) || 1
-      console.log(route)
       nowPage(nowpage)
       const data = await http.get('/board/list', {
         params: {

@@ -70,7 +70,7 @@ export default {
       sortstate,
       sortlist,
       sort: listsortstate,
-      list: list
+      list
     }
   }
 }

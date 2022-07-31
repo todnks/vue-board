@@ -18,9 +18,8 @@ export default class Http {
 
   async get (url, params) {
     const { data } = await axios.get(url, {
-      params
+      ...params
     })
-
     return data
   }
 
