@@ -37,8 +37,12 @@ export default {
       boardinfo(data)
     })
     const listdelete = () => {
-      http.delete(`/api/v1/board/${board.value.idx}`)
-      router.push('/')
+      http.delete('/board', {
+        params: {
+          idx: board.value.idx
+        }
+      })
+      router.push('/?idx=1')
     }
     return {
       board,

@@ -55,7 +55,7 @@ export default {
       await http.post('/member/signin ', {
         ...form
       })
-      router.push('/')
+      router.push('/?idx=1')
     }
     // input에 클래스부여
     const inputfocus = (e) => {

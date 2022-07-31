@@ -58,7 +58,7 @@ export default {
     })
     watch(() => search.value, () => {
       getBoardList()
-      router.push('/')
+      router.push('/?idx=1')
     })
     router.push('/?idx=1')
     return {

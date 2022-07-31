@@ -51,7 +51,7 @@ export default {
       await http.post('/board', {
         ...text
       })
-      router.push('/')
+      router.push('/?idx=1')
     }
     const upDate = async () => {
       http.put('/board', {
@@ -59,12 +59,12 @@ export default {
         idx: page.value
       })
       alert('글수정완료')
-      router.push('/')
+      router.push('/?idx=1')
     }
     onMounted(async () => {
       if (!userinfo._object.userinfo) {
         alert('로그인후에 이용가능')
-        router.push('/')
+        router.push('/?idx=1')
       }
     })
     return {

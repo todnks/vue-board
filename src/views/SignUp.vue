@@ -68,7 +68,7 @@ export default {
 
       if (success) {
         alert('회원가입')
-        router.push('/')
+        router.push('/?idx=1')
       }
     }
     return {

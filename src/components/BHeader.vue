@@ -45,7 +45,7 @@ export default {
       await http.get('/member/logout')
       userinfo.value = null
       alert('로그아웃')
-      router.push('/')
+      router.push('/?idx=1')
     }
     // sidemenu클래스값부여
     const sidemenu = (e) => {
